@@ -1,0 +1,78 @@
+﻿@model IEnumerable<LiquorShop.Areas.Admin.Models.OrderHeader>
+
+@{
+    ViewData["Title"] = "Siparişlerim";
+
+}
+
+<partial name="_HeaderPartial" />
+<br />
+@if (Model.Count()>0)
+		{
+			<div class="container">
+				<div class="row">
+					<div class="table">
+				<table class="table" id="myTable">
+							<thead class="thead-primary">
+								<tr>
+
+									
+									<th>Ad</th>
+									<th>Soyad</th>
+									<th>Sipariş Tarihi</th>
+									<th>Sipariş Durumu</th>
+									<th>Telefon</th>
+									<th>&nbsp;</th>
+								
+								</tr>
+							</thead>
+					<tbody>
+						@foreach (var item in Model)
+						{
+							<tr>
+								<td>
+									@Html.DisplayFor(modelItem => item.Name)
+								</td>
+								<td>
+									@Html.DisplayFor(modelItem => item.Surname)
+								</td>
+								<td>
+									@Html.DisplayFor(modelItem => item.OrderTime)
+								</td>
+								<td>
+									@Html.DisplayFor(modelItem => item.OrderStatus)
+								</td>
+								<td>
+									@Html.DisplayFor(modelItem => item.PhoneNumber)
+								</td>
+
+
+								<td>
+								
+									<a asp-action="MyOrderDetail" asp-controller="Cart" asp-route-id="@item.Id">Detay</a> 
+									
+								</td>
+							</tr>
+						}
+					</tbody>
+						</table>
+					</div>
+				</div>
+				
+			</div>
+		}
+		else
+		{
+			<div class="container"><h4>Siparişiniz bulunmamaktadır.</h4></div>
+		}
+
+
+@section Scripts {
+
+
+		<script type="text/javascript">
+			$(document).ready(function () {
+				$('#myTable').DataTable();
+			});
+		</script>
+    }

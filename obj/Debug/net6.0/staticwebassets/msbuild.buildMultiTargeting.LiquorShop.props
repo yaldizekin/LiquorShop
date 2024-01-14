@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\LiquorShop.props" />
+</Project>

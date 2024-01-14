@@ -1,0 +1,305 @@
+﻿<!doctype html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Liquorshop Yönetim Paneli</title>
+    <meta name="msapplication-TileColor" content="" />
+    <meta name="theme-color" content="" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="MobileOptimized" content="320" />
+    <!-- CSS files -->
+    <link href="/admin/dist/css/tabler.min.css?1685973381" rel="stylesheet" />
+    <link href="/admin/dist/css/tabler-flags.min.css?1685973381" rel="stylesheet" />
+    <link href="/admin/dist/css/tabler-payments.min.css?1685973381" rel="stylesheet" />
+    <link href="/admin/dist/css/tabler-vendors.min.css?1685973381" rel="stylesheet" />
+    <link href="/admin/dist/css/demo.min.css?1685973381" rel="stylesheet" />
+    <link href="//cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" rel="stylesheet" />
+ 
+    <style>
+        @@import url('https://rsms.me/inter/inter.css');
+
+        :root {
+            --tblr-font-sans-serif: 'Inter Var', -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif;
+        }
+
+        body {
+            font-feature-settings: "cv03", "cv04", "cv11";
+        }
+    </style>
+</head>
+<body>
+    <script src="/tabler/dist/js/demo-theme.min.js?1685973381"></script>
+
+    <div class="page">
+
+        <!-- Sidebar -->
+        <aside class="navbar navbar-vertical navbar-expand-lg navbar-transparent">
+
+            <div class="container-fluid">
+                <nav class="navbar navbar-dark bg-dark" aria-label="">
+                    <div class="container-fluid justify-content-md-center">
+                        <a class="navbar-brand" href="/admin">Hoşgeldiniz</a>
+                    </div>
+
+                </nav>
+               
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar-menu" aria-controls="sidebar-menu" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+               
+                <div class="navbar-nav flex-row d-lg-none">
+                    <div class="nav-item d-none d-lg-flex me-3">
+                        <div class="btn-list">
+                            <a href="https://github.com/tabler/tabler" class="btn" target="_blank" rel="noreferrer">
+                                <!-- Download SVG icon from http://tabler-icons.io/i/brand-github -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" /></svg>
+                                Source code
+                            </a>
+                            <a href="https://github.com/sponsors/codecalm" class="btn" target="_blank" rel="noreferrer">
+                                <!-- Download SVG icon from http://tabler-icons.io/i/heart -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon text-pink" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" /></svg>
+                                Sponsor
+                            </a>
+                        </div>
+                    </div>
+                    <div class="d-none d-lg-flex">
+                        <a href="?theme=dark" class="nav-link px-0 hide-theme-dark" title="Enable dark mode" data-bs-toggle="tooltip"
+                           data-bs-placement="bottom">
+                            <!-- Download SVG icon from http://tabler-icons.io/i/moon -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" /></svg>
+                        </a>
+                        <a href="?theme=light" class="nav-link px-0 hide-theme-light" title="Enable light mode" data-bs-toggle="tooltip"
+                           data-bs-placement="bottom">
+                            <!-- Download SVG icon from http://tabler-icons.io/i/sun -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M12 12m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" /><path d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7" /></svg>
+                        </a>
+                        <div class="nav-item dropdown d-none d-md-flex me-3">
+                            <a href="#" class="nav-link px-0" data-bs-toggle="dropdown" tabindex="-1" aria-label="Show notifications">
+                                <!-- Download SVG icon from http://tabler-icons.io/i/bell -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M10 5a2 2 0 1 1 4 0a7 7 0 0 1 4 6v3a4 4 0 0 0 2 3h-16a4 4 0 0 0 2 -3v-3a7 7 0 0 1 4 -6" /><path d="M9 17v1a3 3 0 0 0 6 0v-1" /></svg>
+                                <span class="badge bg-red"></span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-end dropdown-menu-card">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h3 class="card-title">Last updates</h3>
+                                    </div>
+                                    <div class="list-group list-group-flush list-group-hoverable">
+                                        <div class="list-group-item">
+                                            <div class="row align-items-center">
+                                                <div class="col-auto"><span class="status-dot status-dot-animated bg-red d-block"></span></div>
+                                                <div class="col text-truncate">
+                                                    <a href="#" class="text-body d-block">Example 1</a>
+                                                    <div class="d-block text-secondary text-truncate mt-n1">
+                                                        Change deprecated html tags to text decoration classes (#29604)
+                                                    </div>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <a href="#" class="list-group-item-actions">
+                                                        <!-- Download SVG icon from http://tabler-icons.io/i/star -->
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon text-muted" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z" /></svg>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="list-group-item">
+                                            <div class="row align-items-center">
+                                                <div class="col-auto"><span class="status-dot d-block"></span></div>
+                                                <div class="col text-truncate">
+                                                    <a href="#" class="text-body d-block">Example 2</a>
+                                                    <div class="d-block text-secondary text-truncate mt-n1">
+                                                        justify-content:between ⇒ justify-content:space-between (#29734)
+                                                    </div>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <a href="#" class="list-group-item-actions show">
+                                                        <!-- Download SVG icon from http://tabler-icons.io/i/star -->
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon text-yellow" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z" /></svg>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="list-group-item">
+                                            <div class="row align-items-center">
+                                                <div class="col-auto"><span class="status-dot d-block"></span></div>
+                                                <div class="col text-truncate">
+                                                    <a href="#" class="text-body d-block">Example 3</a>
+                                                    <div class="d-block text-secondary text-truncate mt-n1">
+                                                        Update change-version.js (#29736)
+                                                    </div>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <a href="#" class="list-group-item-actions">
+                                                        <!-- Download SVG icon from http://tabler-icons.io/i/star -->
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon text-muted" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z" /></svg>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="list-group-item">
+                                            <div class="row align-items-center">
+                                                <div class="col-auto"><span class="status-dot status-dot-animated bg-green d-block"></span></div>
+                                                <div class="col text-truncate">
+                                                    <a href="#" class="text-body d-block">Example 4</a>
+                                                    <div class="d-block text-secondary text-truncate mt-n1">
+                                                        Regenerate package-lock.json (#29730)
+                                                    </div>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <a href="#" class="list-group-item-actions">
+                                                        <!-- Download SVG icon from http://tabler-icons.io/i/star -->
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon text-muted" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z" /></svg>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" aria-label="Open user menu">
+                            <span class="avatar avatar-sm" style="background-image: url(./static/avatars/000m.jpg)"></span>
+                            <div class="d-none d-xl-block ps-2">
+                                <div>Paweł Kuna</div>
+                                <div class="mt-1 small text-secondary">UI Designer</div>
+                            </div>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                            <a href="#" class="dropdown-item">Status</a>
+                            <a href="./profile.html" class="dropdown-item">Profile</a>
+                            <a href="#" class="dropdown-item">Feedback</a>
+                            <div class="dropdown-divider"></div>
+                            <a href="./settings.html" class="dropdown-item">Settings</a>
+                            <a href="./sign-in.html" class="dropdown-item">Logout</a>
+                        </div>
+                    </div>
+                </div>
+               
+                <div class="collapse navbar-collapse" id="sidebar-menu">
+                    <ul class="navbar-nav pt-lg-3">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/">
+                                <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M5 12l-2 0l9 -9l9 9l-2 0" /><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" /><path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" /></svg>
+                                </span>
+                                <span class="nav-link-title">Mağaza Anasayfa</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/admin">
+                                <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-message" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                        <path d="M8 9h8"></path>
+                                        <path d="M8 13h6"></path>
+                                        <path d="M18 4a3 3 0 0 1 3 3v8a3 3 0 0 1 -3 3h-5l-5 3v-3h-2a3 3 0 0 1 -3 -3v-8a3 3 0 0 1 3 -3h12z"></path>
+                                    </svg>
+                                </span>
+                                <span class="nav-link-title">Mesajlar</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/admin/categories">
+                                <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark" viewBox="0 0 16 16">
+                                 <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
+                                     </svg> 
+                                </span>
+                                <span class="nav-link-title">Kategoriler</span>
+                            </a>
+                        </li>   
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/admin/home/blog">
+                                <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-blockquote-left" viewBox="0 0 16 16">
+                                        <path d="M2.5 3a.5.5 0 0 0 0 1h11a.5.5 0 0 0 0-1h-11zm5 3a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1h-6zm0 3a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1h-6zm-5 3a.5.5 0 0 0 0 1h11a.5.5 0 0 0 0-1h-11zm.79-5.373c.112-.078.26-.17.444-.275L3.524 6c-.122.074-.272.17-.452.287-.18.117-.35.26-.51.428a2.425 2.425 0 0 0-.398.562c-.11.207-.164.438-.164.692 0 .36.072.65.217.873.144.219.385.328.72.328.215 0 .383-.07.504-.211a.697.697 0 0 0 .188-.463c0-.23-.07-.404-.211-.521-.137-.121-.326-.182-.568-.182h-.282c.024-.203.065-.37.123-.498a1.38 1.38 0 0 1 .252-.37 1.94 1.94 0 0 1 .346-.298zm2.167 0c.113-.078.262-.17.445-.275L5.692 6c-.122.074-.272.17-.452.287-.18.117-.35.26-.51.428a2.425 2.425 0 0 0-.398.562c-.11.207-.164.438-.164.692 0 .36.072.65.217.873.144.219.385.328.72.328.215 0 .383-.07.504-.211a.697.697 0 0 0 .188-.463c0-.23-.07-.404-.211-.521-.137-.121-.326-.182-.568-.182h-.282a1.75 1.75 0 0 1 .118-.492c.058-.13.144-.254.257-.375a1.94 1.94 0 0 1 .346-.3z" />
+                                    </svg>
+                                </span>
+                                <span class="nav-link-title">Blog</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/admin/products">
+                                <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark" viewBox="0 0 16 16">
+                                 <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
+                                     </svg> 
+                                </span>
+                                <span class="nav-link-title">Ürünler</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/admin/user">
+                                <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                                        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                                    </svg>
+                                </span>
+                                <span class="nav-link-title">Kullanıcı Yönetim</span>
+                            </a>
+                        </li>  <li class="nav-item">
+                            <a class="nav-link active" href="/admin/order">
+                                <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag-heart" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0M14 14V5H2v9a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1M8 7.993c1.664-1.711 5.825 1.283 0 5.132-5.825-3.85-1.664-6.843 0-5.132" />
+                                    </svg>
+                                </span>
+                                <span class="nav-link-title">Sipariş Yönetim</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </aside>
+         <nav class="navbar navbar-dark bg-dark" aria-label="">
+             <div class="container-fluid justify-content-md-center">
+                        <a class="navbar-brand" href="/admin">LiquorShop Yönetim Paneli</a>
+                    </div>
+                </nav>
+        <div class="page-wrapper">
+
+            <!-- Page header -->
+            
+            <!-- Page body -->
+            <div class="page-body">
+                <div class="container-xl">
+
+                    @RenderBody()
+
+                </div>
+            </div>
+            <footer class="footer footer-transparent d-print-none">
+                <div class="container-xl">
+                    <div class="row text-center align-items-center flex-row-reverse">
+
+                        <div class="col-12 col-lg-auto mt-3 mt-lg-0">
+                            <ul class="list-inline list-inline-dots mb-0">
+                                <li class="list-inline-item">Copyright &copy; 2023</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Tabler Core -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/admin/dist/js/tabler.min.js?1685973381" defer></script>
+    <script src="/admin/dist/js/demo.min.js?1685973381" defer></script>
+    <script src="//cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js" defer></script>
+     <script src="//cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js" defer></script>
+
+    @RenderSection("Script", false)
+    @RenderSection("Scripts", false)
+</body>
+</html>

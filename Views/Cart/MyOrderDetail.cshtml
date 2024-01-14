@@ -1,0 +1,94 @@
+﻿@model LiquorShop.Areas.Admin.Models.OrderDetailVM
+
+
+@{
+    ViewData["Title"] = "Sipariş Detay";
+
+}
+
+<partial name="_HeaderPartial" />
+<br />
+<br />
+<br />
+<form method="post">
+    <input hidden asp-for="OrderHeader.Id" />
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div>
+                    <dl class="row">
+                        <dt class="col-sm-2">
+                            Ad
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.OrderHeader.Name)
+                        </dd>
+                        <dt class="col-sm-2">
+                            Soyad
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.OrderHeader.Surname)
+                        </dd>
+                        <dt class="col-sm-2">
+                            Adres
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.OrderHeader.Adress)
+                        </dd>
+                        <dt class="col-sm-2">
+                            Şehir
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.OrderHeader.City)
+                        </dd>
+                        <dt class="col-sm-2">
+                            Posta Kodu
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.OrderHeader.ZipCode)
+                        </dd>
+                        <dt class="col-sm-2">
+                            Sipariş Zamanı
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.OrderHeader.OrderTime)
+                        </dd>
+                    </dl>
+                </div>
+
+            </div>
+            <div class="col-md-6">
+                <div class="col-md-12">
+
+                    <ul class="list-group mb-3">
+                        @foreach (var item in Model.OrderDetail)
+                        {
+                            <li class="list-group-item d-flex justify-content-between lh-sm">
+                                <div>
+                                    <h6 class="my-0">@item.Product.Name</h6>
+                                    <small class="text-body-secondary">Adet: @item.Count</small>
+                                </div>
+                                <span class="text-body-secondary">@((item.Count * item.Product.Price).ToString("0.00"))₺</span>
+                            </li>
+                        }
+
+                        <li class="list-group-item d-flex justify-content-between bg-body-tertiary">
+                            <div class="text-success">
+                                <h6 class="my-0">Toplam Tutar</h6>
+                            </div>
+                            <span class="text-success">@(Model.OrderHeader.TotalPrice.ToString("0.00"))₺</span>
+                        </li>
+
+                    </ul>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+</form>

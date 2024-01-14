@@ -1,0 +1,40 @@
+﻿@model List<LiquorShop.Areas.Admin.Models.Product>
+@{
+	ViewData["Title"] = "Ürünler";
+
+}
+<partial name="_HeaderPartial" />
+
+<section class="ftco-section">
+	<div class="container">
+		
+		<div class="row">
+
+			@foreach (var item in Model)
+				{
+
+				<div class="col-md-3 d-flex">
+					<div class="product ftco-animate">
+						<div class="img d-flex align-items-center justify-content-center" style="background-image: url(/backup/pro/@item.ImagePath);">
+							<div class="desc">
+								<p class="meta-prod d-flex">
+								@*<a asp-action="ShoppingBag"  asp-controller="Cart" asp-route-id="@item.Id"   class="d-flex align-items-center justify-content-center"><span class="flaticon-shopping-bag"></span></a>
+								*@	
+								<a asp-action="ProductPost" asp-controller="Home"asp-route-id="@item.Id" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>
+								</p>
+							</div>
+						</div>
+						<div class="text text-center">
+							
+							<span class="category">@item.Category</span>
+							<h2>@item.Name</h2>
+							<p class="mb-0"> <span class="price">@item.Price.ToString("0.00")₺</span></p>
+						</div>
+					</div>
+				</div>
+			}
+
+		</div>
+	</div>
+</section>
+				

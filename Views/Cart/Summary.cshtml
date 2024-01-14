@@ -1,0 +1,134 @@
+﻿@model LiquorShop.Areas.Admin.Models.ShoppingCartVM
+
+@{
+	ViewData["Title"] = "Sipariş";
+
+}
+
+<partial name="_HeaderPartial" />
+<br />
+
+<form method="post">
+    <div class="container">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3 row">
+                            <label  class="col-sm-2 col-form-label">Ad</label>
+                            <div class="col-sm-9">
+                                <input type="text"asp-for="OrderHeader.Name" class="form-control" >
+                                <span asp-validation-for="OrderHeader.Name"></span>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label  class="col-sm-2 col-form-label">Soyad</label>
+                            <div class="col-sm-9">
+                                <input type="text"asp-for="OrderHeader.Surname" class="form-control" >
+                                <span asp-validation-for="OrderHeader.Surname"></span>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label  class="col-sm-2 col-form-label">Telefon</label>
+                            <div class="col-sm-9">
+                                <input type="tel"asp-for="OrderHeader.PhoneNumber" class="form-control" >
+                                <span asp-validation-for="OrderHeader.PhoneNumber"></span>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label class="col-sm-2 col-form-label">Şehir</label>
+                            <div class="col-sm-9">
+                                <input type="text" asp-for="OrderHeader.City" class="form-control">
+                                <span asp-validation-for="OrderHeader.City"></span>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label class="col-sm-2 col-form-label">Adres</label>
+                            <div class="col-sm-9">
+                                <input type="text" asp-for="OrderHeader.Adress" class="form-control">
+                                <span asp-validation-for="OrderHeader.Adress"></span>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label class="col-sm-2 col-form-label">Posta Kodu</label>
+                            <div class="col-sm-9">
+                                <input type="text" asp-for="OrderHeader.ZipCode" class="form-control">
+                                <span asp-validation-for="OrderHeader.ZipCode"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="col-md-12">
+                          
+                            <ul class="list-group mb-3">
+                                @foreach (var item in Model.ListCart)
+                                {
+                                    <li class="list-group-item d-flex justify-content-between lh-sm">
+                                        <div>
+                                            <h6 class="my-0">@item.Product.Name</h6>
+                                            <small class="text-body-secondary">Adet: @item.Count</small>
+                                        </div>
+                                        <span class="text-body-secondary">@((item.Count*item.Product.Price).ToString("0.00"))₺</span>
+                                    </li>
+                                }
+                                
+                                <li class="list-group-item d-flex justify-content-between bg-body-tertiary">
+                                    <div class="text-success">
+                                        <h6 class="my-0">Toplam Tutar</h6>
+                                    </div>
+                                    <span class="text-success">@(Model.OrderHeader.TotalPrice.ToString("0.00"))₺</span>
+                                </li>
+                                
+                            </ul>
+                        </div>
+                        <div class="mb-3 row">
+                            <label class="col-sm-4 col-form-label">Kart Adı</label>
+                            <div class="col-sm-8">
+                                <input type="text" asp-for="OrderHeader.CardName" class="form-control">
+                                <span asp-validation-for="OrderHeader.CardName"></span>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label class="col-sm-4 col-form-label">Kart Numarası</label>
+                            <div class="col-sm-8">
+                                <input type="text" asp-for="OrderHeader.CardNo" class="form-control">
+                                <span asp-validation-for="OrderHeader.CardNo"></span>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                           
+                            <div class="col-sm-4">
+                                <input type="text" asp-for="OrderHeader.ExpirationMonth" class="form-control" placeholder="Ay">
+                                <span asp-validation-for="OrderHeader.ExpirationMonth"></span>
+                            </div>
+                            <div class="col-sm-4">
+                                <input type="text" asp-for="OrderHeader.ExpirationYear" class="form-control" placeholder="Yıl">
+                                <span asp-validation-for="OrderHeader.ExpirationYear"></span>
+                            </div>
+                            <div class="col-sm-4">
+                                <input type="text" asp-for="OrderHeader.Cvc" class="form-control" placeholder="CVC">
+                                <span asp-validation-for="OrderHeader.Cvc"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="row">
+                    <div class="col-md-6">
+                    
+                    </div>
+                    <div class="col-md-6">
+                        <button type="submit" class="btn btn-primary  form-control">Tamamla</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+         
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}

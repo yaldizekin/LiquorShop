@@ -1,0 +1,99 @@
+﻿@page
+@model RegisterModel
+@using LiquorShop.Areas.Admin.Models
+@{
+    ViewData["Title"] = "Kayıt Ol";
+}
+<partial name="_HeaderPartial" />
+
+
+<div class="container">
+    <div class="col-md-12">
+        <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+           
+           <br />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="Email" /> 
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input asp-for="Input.Name" class="form-control" autocomplete="username" aria-required="true" placeholder="Ad" />
+                <span asp-validation-for="Input.Name" class="text-danger"></span>
+            </div> <div class="form-group">
+                <input asp-for="Input.Surname" class="form-control" autocomplete="username" aria-required="true" placeholder="Soyad" />
+                <span asp-validation-for="Input.Surname" class="text-danger"></span>
+            </div> 
+            <div class="form-group">
+                <input asp-for="Input.Adress" class="form-control" autocomplete="username" aria-required="true" placeholder="Adres" />
+                <span asp-validation-for="Input.Adress" class="text-danger"></span>
+            </div> 
+            <div class="form-group">
+                <input asp-for="Input.City" class="form-control" autocomplete="username" aria-required="true" placeholder="Şehir" />
+               
+                <span asp-validation-for="Input.City" class="text-danger"></span>
+            </div> 
+            <div class="form-group">
+                <input asp-for="Input.ZipCode" class="form-control" autocomplete="username" aria-required="true" placeholder="Posta Kodu"/>
+            
+                <span asp-validation-for="Input.ZipCode" class="text-danger"></span>
+            </div> 
+            <div class="form-group">
+                <input asp-for="Input.PhoneNumber" class="form-control" autocomplete="username" aria-required="true" placeholder="Telefon Numarası" />
+            
+                <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" placeholder="Şifre" />
+ 
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" placeholder="Şifre Tekrar" />
+              
+                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+            </div>
+            @if (User.IsInRole(Other.Role_Admin))
+            {
+                <div class="form-group">
+                   @Html.DropDownListFor(m=>m.Input.Role,Model.Input.RoleList,"Select Role", new{@class="form-control"})
+                </div>
+                
+            }
+            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Üye Ol</button>
+        </form>
+    </div>
+    <div class="col-md-6 col-md-offset-2">
+        <section>
+         <br />
+            @{
+                if ((Model.ExternalLogins?.Count ?? 0) == 0)
+                {
+                    <div>
+                        <p>
+                            There are no external authentication services configured. See this <a href="https://go.microsoft.com/fwlink/?LinkID=532715">article
+                            about setting up this ASP.NET application to support logging in via external services</a>.
+                        </p>
+                    </div>
+                }
+                else
+                {
+                    <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
+                        <div>
+                            <p>
+                                @foreach (var provider in Model.ExternalLogins!)
+                                {
+                                    <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
+                                }
+                            </p>
+                        </div>
+                    </form>
+                }
+            }
+        </section>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

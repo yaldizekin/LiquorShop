@@ -1,0 +1,182 @@
+﻿@model LiquorShop.Areas.Admin.Models.ShoppingCart
+
+@{
+	ViewData["Title"] = @Model.Product.Name;
+
+}
+<partial name="_HeaderPartial" />
+<section class="ftco-section">
+	<div class="container">
+		<form method="post">
+		<div class="row">
+			
+				<input hidden asp-for="ProductId" />
+			<div class="col-lg-6 mb-6 ftco-animate">
+					<a href="/backup/pro/@Model.Product.ImagePath" class="image-popup prod-img"><img src="/backup/pro/@Model.Product.ImagePath" class="img-fluid" width="350" alt="Colorlib Template"></a>
+			</div>
+			<div class="col-lg-6 product-details md-6 ftco-animate">
+					<h2>@Model.Product.Name</h2>
+
+					
+					<p>@Model.Product.Description</p>
+					<p class="price"><span>@Model.Product.Price.ToString("0.00")₺</span></p>
+					
+
+
+				@if (Model.Product.IsActive)
+
+					{
+						
+						<input asp-for="Count" />
+
+						<button type="submit" class="btn btn-primary"><i class="bi bi-cart4"></i>Sepete Ekle</button>
+						
+					
+					
+				}
+				else
+				{
+					<p>Tükendi.</p>
+				}
+
+			</div>
+
+			</div>
+		</form>
+		@*<div class="row mt-5">
+			<div class="col-md-12 nav-link-wrap">
+				<div class="nav nav-pills d-flex text-center" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+					<a class="nav-link ftco-animate mr-lg-1 fadeInUp ftco-animated show" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-1" aria-selected="false">Description</a>
+
+					<a class="nav-link ftco-animate mr-lg-1 fadeInUp ftco-animated show" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2" role="tab" aria-controls="v-pills-2" aria-selected="false">Manufacturer</a>
+
+					<a class="nav-link ftco-animate fadeInUp ftco-animated show active" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-3" aria-selected="true">Reviews</a>
+
+				</div>
+			</div>
+			<div class="col-md-12 tab-wrap">
+
+				<div class="tab-content bg-light" id="v-pills-tabContent">
+
+					<div class="tab-pane fade" id="v-pills-1" role="tabpanel" aria-labelledby="day-1-tab">
+						<div class="p-4">
+							<h3 class="mb-4"></h3>
+							<p>On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country. But nothing the copy said could convince her and so it didn’t take long until a few insidious Copy Writers ambushed her, made her drunk with Longe and Parole and dragged her into their agency, where they abused her for their.</p>
+						</div>
+					</div>
+
+					<div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-day-2-tab">
+						<div class="p-4">
+							<h3 class="mb-4">Manufactured By Liquor Store</h3>
+							<p>On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country. But nothing the copy said could convince her and so it didn’t take long until a few insidious Copy Writers ambushed her, made her drunk with Longe and Parole and dragged her into their agency, where they abused her for their.</p>
+						</div>
+					</div>
+					<div class="tab-pane fade active show" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-day-3-tab">
+						<div class="row p-4">
+							<div class="col-md-7">
+								<h3 class="mb-4">Yorumlar</h3>
+								<div class="review">
+									<div class="user-img" style="background-image: url(images/person_1.jpg)"></div>
+									<div class="desc">
+										<h4>
+											<span class="text-left">Jacob Webb</span>
+											<span class="text-right">25 April 2020</span>
+										</h4>
+										<p class="star">
+											<span>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+											</span>
+											<span class="text-right"><a href="#" class="reply"><i class="icon-reply"></i></a></span>
+										</p>
+										<p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrov</p>
+									</div>
+								</div>
+								<div class="review">
+									<div class="user-img" style="background-image: url(images/person_2.jpg)"></div>
+									<div class="desc">
+										<h4>
+											<span class="text-left">Jacob Webb</span>
+											<span class="text-right">25 April 2020</span>
+										</h4>
+										<p class="star">
+											<span>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+											</span>
+											<span class="text-right"><a href="#" class="reply"><i class="icon-reply"></i></a></span>
+										</p>
+										<p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrov</p>
+									</div>
+								</div>
+								<div class="review">
+									<div class="user-img" style="background-image: url(images/person_3.jpg)"></div>
+									<div class="desc">
+										<h4>
+											<span class="text-left">Jacob Webb</span>
+											<span class="text-right">25 April 2020</span>
+										</h4>
+										<p class="star">
+											<span>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+											</span>
+											<span class="text-right"><a href="#" class="reply"><i class="icon-reply"></i></a></span>
+										</p>
+										<p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrov</p>
+									</div>
+								</div>
+						
+							</div>
+							<div class="col-md-4">
+								<div class="rating-wrap">
+									<h3 class="mb-4"></h3>
+									<form method="post">
+										<div class="row">
+										<div class="form-group">
+											<h4>Yorum Ekle</h4>
+											<label for="message">Message</label>
+											<textarea name="msg" id="" msg cols="30" rows="5" class="form-control" style="background-color: black;"></textarea>
+										</div>
+										<div class="form-group">
+											<label for="name">Name</label>
+											<input type="text" name="@Model" id="fullname" class="form-control">
+										</div>
+										<div class="form-group">
+											<label for="email">Email</label>
+											<input type="text" name="email" id="email" class="form-control">
+										</div>
+											<div class="form-group" hidden>
+												<label asp-for="AppUserId" class="control-label"></label>
+												<select asp-for="AppUserId" class="form-control" ></select>
+											</div> 
+											<div class="form-group" hidden>
+												<label for="@Model" class="control-label"></label>
+												<select asp-for="AppUserId" class="form-control"></select>
+											</div>
+									
+										<div class="form-group">
+											<button type="button" id="post" class="btn">Post Comment</button>
+										</div>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>*@
+	</div>
+</section>
+
+

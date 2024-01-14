@@ -1,0 +1,94 @@
+﻿@model IEnumerable<LiquorShop.Areas.Admin.Models.OrderHeader>
+
+<div class="btn-group d-grid gap-2 d-md-flex justify-content-md-end" role="group" aria-label="Basic example">
+    <a asp-action="Index" asp-area="Admin" asp-controller="Order" type="button" class="btn btn-outline-primary active ">Tüm Siparişler</a>
+    <a asp-action="Pending" asp-area="Admin" asp-controller="Order" type="button" class="btn btn-outline-primary">Bekleyen Siparişler</a>
+    <a asp-action="Approved" asp-area="Admin" asp-controller="Order" type="button" class="btn btn-outline-primary">Onaylanan Siparişler</a>
+    <a asp-action="Shipped" asp-area="Admin" asp-controller="Order" type="button" class="btn btn-outline-primary">Kargoya Verilen Siparişler</a>
+   
+</div>
+
+<br />
+<table class="table" id="myTable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Surname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </th>
+          
+            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Surname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrderTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrderStatus)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhoneNumber)
+                </td>
+               
+               
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Düzenle</a> |
+                    <a asp-action="Details" asp-controller="Order" asp-route-id="@item.Id">Detay</a> |
+                    <a href="#" data-id="@item.Id" class="btn delete">Sil</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+@section Scripts {
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#myTable').DataTable();
+        });
+    </script>
+    <script>
+        $('.delete').click(function (e) {
+            e.preventDefault();
+
+            const that = $(this);
+
+            if (that.hasClass('ajaxOn')) {
+                return;
+            }
+
+            that.addClass('ajaxOn');
+            if (confirm('Silmek istediğine emin misin?')) {
+                // burda ajax olmalı ve ajax sonucu başarılı ise ona göre satır silinmeli
+                $.get('/admin/order/delete/' + that.data('id'), function (r) {
+                    that.parent().parent().parent().remove();
+                });
+            }
+        });
+    </script>
+    }

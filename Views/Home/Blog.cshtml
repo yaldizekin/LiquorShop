@@ -1,0 +1,44 @@
+﻿@using X.PagedList;
+@using X.PagedList.Mvc.Core;
+@using X.PagedList.Mvc.Core.Fluent;
+
+@model List<LiquorShop.Areas.Admin.Models.Blog>
+@{
+    ViewData["Title"] = "Blog";
+
+}
+<partial name="_HeaderPartial" />
+<section class="ftco-section">
+    <div class="container">
+        <div class="row d-flex">
+  @foreach (var item in Model)
+{
+
+           
+                <div class="col-lg-6 d-flex align-items-stretch ftco-animate">
+                    <div class="blog-entry d-md-flex">
+               
+                  
+                        <a href="@item.Slug" class="block-20 img" style="background-image: url(/backup/images/@item.ImagePath) ;">
+                        </a>
+                        <div class="text p-4 bg-light">
+                            <div class="meta">
+                                <p><span class="fa fa-calendar"></span>@item.CreatedOn</p>
+                            </div>
+                            <h3 class="heading mb-3"><a href="#">@item.Title</a></h3>
+                            <p>@item.Summary</p>
+                            <a href="@item.Slug" class="btn-custom">Tamamını oku <span class="fa fa-long-arrow-right"></span></a>
+
+                        </div>
+
+
+                    </div>
+                </div>
+          
+                    }
+                   
+            @* @Html.PagedListPager(Model,page=>Url.Action("Blog",new{page}))*@
+               
+          </div>
+    </div>
+    </section>

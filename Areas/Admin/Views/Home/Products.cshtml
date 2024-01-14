@@ -1,0 +1,89 @@
+﻿@model List<LiquorShop.Areas.Admin.Models.Product>
+
+<div class="row row-cards">
+
+    <div class="col-12">
+        <div class="btn-list">
+            <a href="/admin/home/addproduct" class="btn btn-primary d-none d-sm-inline-block">
+                <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="5" height="5" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M12 5l0 14" /><path d="M5 12l14 0" /></svg>
+                Yeni Ürün Ekle
+            </a>
+        </div>
+        <div class="card">
+            <div class="table-responsive">
+                <table class="table table-vcenter table-mobile-md card-table">
+                    <thead>
+                        <tr>
+                            <th>İsim</th>
+                            <th>Açıklama</th>
+                            <th>Fiyat</th>
+                            <th>Aktif</th>
+                            <th>Kategori</th>
+                            <th class="w-1"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var product in Model)
+                        {
+                            <tr>
+                                <td data-label="Başlık">
+                                    <div class="d-flex py-1 align-items-center">
+                                        <div class="flex-fill">
+                                            <div class="font-weight-medium">@product.Name</div>
+                                             </div>
+                                    </div>
+                                </td>
+                                <td data-label="Açıklama">
+                                    <div>@product.Description</div>
+                                </td>
+                                <td data-label="Fiyat">
+                                    <div>@product.Price</div>
+                                </td>
+                                <td data-label="Aktif">
+                                    <div>@product.IsActive</div>
+                                </td>
+                                <td data-label="Kategori">
+                                    <div>@product.Category</div>
+                                </td>
+                                <td>
+                                    <div class="btn-list flex-nowrap">
+                                        <a href="#"  class="btn edit">Düzenle</a>
+                                        <a href="#" data-id="@product.Id" class="btn delete">Sil</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+@section Script {
+    <script>
+        $('.delete').click(function (e) {
+            e.preventDefault();
+
+            const that = $(this);
+
+            if (that.hasClass('ajaxOn')) {
+                return;
+            }
+
+            that.addClass('ajaxOn');
+            if (confirm('Silmek istediğine emin misin?')) {
+                // burda ajax olmalı ve ajax sonucu başarılı ise ona göre satır silinmeli
+                $.get('admin/deleteproduct/' + that.data('id'), function (r) {
+                    that.parent().parent().parent().remove();
+                });
+            }
+        });
+    </script>
+}

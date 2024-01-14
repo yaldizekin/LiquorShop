@@ -1,0 +1,71 @@
+﻿@model List<LiquorShop.Areas.Admin.Models.Contact>
+
+<table class="table" id="myTable">
+    <thead>
+        <tr>
+            <th>Ad</th>
+            <th>Email</th>
+            <th>Mesaj</th>
+            <th class="w-1"></th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var message in Model)
+        {
+            <tr>
+                <td data-label="Ad">
+                    <div class="d-flex py-1 align-items-center">
+                        <div class="flex-fill">
+                            <div class="font-weight-medium">@message.FullName</div>
+
+                        </div>
+                    </div>
+                </td>
+                <td data-label="Email">
+                    <div>@message.Email</div>
+                </td>
+                <td data-label="Mesaj">
+                    <div>@message.Message</div>
+                </td>
+                <td>
+                    <div class="btn-list flex-nowrap">
+                        <a href="/admin/home/messages/@message.Id" class="btn edit">Detaylar</a>
+                        <a href="#" data-id="@message.Id" class="btn delete">Sil</a>
+                    </div>
+                </td>
+            </tr>
+        }
+
+
+
+    </tbody>
+</table>
+
+@section Scripts {
+
+    <script>
+        $('.delete').click(function (e) {
+            e.preventDefault();
+
+            const that = $(this);
+
+            if (that.hasClass('ajaxOn')) {
+                return;
+            }
+
+            that.addClass('ajaxOn');
+            if (confirm('Silmek istediğine emin misin?')) {
+                // burda ajax olmalı ve ajax sonucu başarılı ise ona göre satır silinmeli
+                $.get('/admin/deletemsg/' + that.data('id'), function (r) {
+                    that.parent().parent().parent().remove();
+                });
+            }
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#myTable').DataTable();
+        });
+    </script>
+    }

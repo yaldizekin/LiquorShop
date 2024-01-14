@@ -1,0 +1,104 @@
+﻿@model LiquorShop.Areas.Admin.Models.Contact
+@{
+	ViewData["Title"] = "İletişim";
+
+}
+
+<partial name="_HeaderPartial" />
+
+<section class="ftco-section bg-light">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-md-12">
+				<div class="wrapper px-md-4">
+					<div class="row mb-5">
+						<div class="col-md-3">
+							<div class="dbox w-100 text-center">
+								<div class="icon d-flex align-items-center justify-content-center">
+									<a href="mailto:yaldizekin@gmail" ><span class="fa fa-paper-plane"></span></a>
+								</div>
+
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="dbox w-100 text-center">
+								<div class="icon d-flex align-items-center justify-content-center">
+									<a href="https://www.linkedin.com/in/ekin-yald%C4%B1z-980672149/" target="_blank"><span class="fa fa-linkedin"></span></a>
+
+								</div>
+								
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="dbox w-100 text-center">
+								<div class="icon d-flex align-items-center justify-content-center">
+									<a href="https://github.com/yaldizekin" target="_blank"><span class="fa fa-github"></span></a>
+								</div>
+								
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="dbox w-100 text-center">
+								<div class="icon d-flex align-items-center justify-content-center">
+									<a href="#" target="_blank"><span class="fa fa-globe"></span></a>
+								</div>
+								
+							</div>
+						</div>
+					</div>
+					<div class="row no-gutters">
+						<div class="col-md-7">
+							<div class="contact-wrap w-100 p-md-5 p-4">
+								<h3 class="mb-4">Bize Ulaşın</h3>
+								<form  method="post"  autocomplete="off" >
+									<div class="form-group" hidden>
+										<input asp-for="AppUserId" name="AppUserId" class="control-label" />
+									</div>
+									<div class="col-md-12">
+										
+                                        <div class="form-group">
+											
+											<label asp-for="FullName"  class="control-label">Adınız</label>
+											<input asp-for="FullName" name="FullName" class="form-control" required />
+											<span asp-validation-for="FullName" class="text-danger"></span>
+										</div>
+									</div>
+									<div class="col-md-12">
+										<div class="form-group">
+											<label asp-for="Email" class="control-label"></label>
+											<input asp-for="Email" name="Email" class="form-control" required />
+											<span asp-validation-for="Email" class="text-danger"></span>
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="col-md-12">
+											<label asp-for="Subject" class="control-label">Konu</label>
+											<input asp-for="Subject" name="Subject" class="form-control" required />
+											<span asp-validation-for="Subject" class="text-danger"></span>
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="col-md-12">
+											<label asp-for="Message" class="control-label">Mesaj</label>
+											<input asp-for="Message" name="Message" class="form-control" required />
+											<span asp-validation-for="Message" class="text-danger"></span>
+										</div>
+									</div>
+									
+								
+									<div class="form-group">
+										<input type="submit" value="Gönder" class="btn btn-primary" />
+									</div>
+								</form>
+							</div>
+						</div>
+						<div class="col-md-5 order-md-first d-flex align-items-stretch">
+							<div class="map"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d24066.37072879443!2d28.968258464633582!3d41.062514574075166!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cab685c86f5979%3A0x2519479e0fb398da!2zxZ5pxZ9saS_EsHN0YW5idWw!5e0!3m2!1str!2str!4v1701379372970!5m2!1str!2str" width="500" height="630" style="border:0;" allowfullscreen="" loading="eager" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+					
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

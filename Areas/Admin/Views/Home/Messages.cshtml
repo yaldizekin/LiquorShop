@@ -1,0 +1,36 @@
+﻿@model LiquorShop.Areas.Admin.Models.Contact
+
+<div>
+   
+    <dl class="row">
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.FullName)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.FullName)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.Subject)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.Subject)
+        </dd>
+        
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.Message)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.Message)
+        </dd>
+        
+       
+    </dl>
+
+    <a asp-action="Index">Geri Dön</a>
+</div>

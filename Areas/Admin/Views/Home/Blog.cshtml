@@ -1,0 +1,82 @@
+﻿@model List<LiquorShop.Areas.Admin.Models.Blog>
+
+<div class="row">
+
+    <div class="col-md-6">
+        <h3>Blog Yazıları</h3>
+    </div>
+        <div class="col-md-6">
+        <a href="/admin/home/addblog" class="btn btn-primary form-control">
+            <i class="bi bi-body-text"></i>
+               
+                Yeni Yazı Ekle
+            </a>
+        </div>
+ </div>
+<table class="table" id="myTable">
+    <thead>
+        <tr>
+            <th>Başlık</th>
+            <th>Özet</th>
+            <th class="w-1"></th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var blog in Model)
+        {
+            <tr>
+                <td data-label="Başlık">
+                    <div class="d-flex py-1 align-items-center">
+                        <div class="flex-fill">
+                            <div class="font-weight-medium">@blog.Title</div>
+                            <div class="text-muted"><a href="/@blog.Slug" target="_blank" class="text-reset">@blog.Slug</a></div>
+                        </div>
+                    </div>
+                </td>
+                <td data-label="Özet">
+                    <div>@blog.Summary</div>
+                </td>
+                <td>
+                    <div class="btn-list flex-nowrap">
+                        <a href="/admin/home/editblog/@blog.Id" class="btn edit">Düzenle</a>
+                        <a href="#" data-id="@blog.Id" class="btn delete">Sil</a>
+                    </div>
+                </td>
+            </tr>
+        }
+
+
+
+    </tbody>
+</table>
+    
+
+
+@section Scripts {
+    
+    <script>
+        $('.delete').click(function (e) {
+            e.preventDefault();
+
+            const that = $(this);
+
+            if (that.hasClass('ajaxOn')) {
+                return;
+            }
+
+            that.addClass('ajaxOn');
+            if (confirm('Silmek istediğine emin misin?')) {
+                // burda ajax olmalı ve ajax sonucu başarılı ise ona göre satır silinmeli
+                $.get('/admin/deleteblog/' + that.data('id'), function (r) {
+                    that.parent().parent().parent().remove();
+                });
+            }
+        });
+    </script>
+        <script type="text/javascript">
+                $(document).ready(function () {
+                    $('#myTable').DataTable();
+                });
+            </script>
+    }
