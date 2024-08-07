@@ -7,4 +7,4 @@ https://github.com/yaldizekin/LiquorShop/assets/116371828/e3ee1705-7ef5-4884-893
 
 
 
-https://liquorshop.ekinyaldiz.com.tr/
+
